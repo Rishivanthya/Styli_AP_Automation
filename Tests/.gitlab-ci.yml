@@ -1,0 +1,17 @@
+#define pipeline
+stages:
+    test
+
+k6-test
+  stages:test
+  image:
+    name: loadimpact/k6 
+    entrypoint:[""]
+  only
+    - master
+  script:
+     - k6 run ./Tests/Framework_Styli_APIAutomationPerformance_scripts/tests/01_start.js --vus 5 --duration 20s
+
+  cache: {}
+  tages:
+       - gitlab-org-docker
